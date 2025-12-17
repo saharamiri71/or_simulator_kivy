@@ -19,6 +19,8 @@ android.minapi = 21
 
 android.ndk = 23b
 android.sdk_path = /home/runner/android-sdk
+android.ndk_path = /home/runner/.buildozer/android/platform/android-ndk-r23b
+
 
 
 android.enable_androidx = True
