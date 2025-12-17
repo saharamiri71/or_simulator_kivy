@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python 3.9
@@ -18,18 +18,20 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install Linux dependencies
+      - name: Install system dependencies
         run: |
           sudo apt update
           sudo apt install -y \
+            git \
             openjdk-17-jdk \
             python3-pip \
-            git zip unzip \
+            zip unzip \
             autoconf automake libtool \
             pkg-config zlib1g-dev \
             libffi-dev libssl-dev
+          git --version
 
-      - name: Install Android SDK (stable way)
+      - name: Install Android SDK
         run: |
           export ANDROID_HOME=$HOME/android-sdk
           mkdir -p $ANDROID_HOME
@@ -62,8 +64,8 @@ jobs:
         run: |
           buildozer android debug
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
+          name: ORSimulator-debug-apk
           path: bin/*.apk
