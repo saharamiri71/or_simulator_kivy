@@ -1,0 +1,70 @@
+<HomePageRoot>:
+    orientation: "vertical"
+    spacing: 40
+    padding: 40
+
+    Label:
+        text: "welcome"
+        font_size: 40
+        size_hint_y: 0.13
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 40
+        padding: 20
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 20
+
+            Button:
+                text: "OR-1"
+                font_size: 28
+                on_press: app.select_room(1)
+
+            Button:
+                text: "OR-3"
+                font_size: 28
+                on_press: app.select_room(3)
+
+            Button:
+                text: "OR-5"
+                font_size: 28
+                on_press: app.select_room(5)
+
+            Widget:
+            Widget:
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 20
+
+            Button:
+                text: "OR-2"
+                font_size: 28
+                on_press: app.select_room(2)
+
+            Button:
+                text: "OR-4"
+                font_size: 28
+                on_press: app.select_room(4)
+
+            Button:
+                text: "OR-6"
+                font_size: 28
+                on_press: app.select_room(6)
+
+            Button:
+                text: "OR-7"
+                font_size: 28
+                on_press: app.select_room(7)
+
+            Button:
+                text: "OR-8"
+                font_size: 28
+                on_press: app.select_room(8)
+
+    Button:
+        text: "list patient"
+        size_hint_y: 0.15
+        on_press: app.root.current = "patient_list"

@@ -1,0 +1,51 @@
+<PatientListRoot>:
+    orientation: "vertical"
+    spacing: 20
+    padding: 25
+
+    Label:
+        text: "patient list"
+        font_size: 40
+        size_hint_y: 0.12
+
+    TextInput:
+        id: search_box
+        hint_text: "search patient name..."
+        font_size: 26
+        multiline: False
+        size_hint_y: None
+        height: 60
+        on_text: root.refresh()
+
+    ScrollView:
+        size_hint_y: 1
+        canvas.before:
+            Color:
+                rgba: 0.20, 0.20, 0.22, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [12]
+        GridLayout:
+            id: patient_list_container
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 15
+            padding: 10
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: 0.15
+        spacing: 20
+
+        Button:
+            text: "home page"
+            font_size: 26
+            on_press: app.root.current = "home_screen"
+
+        Button:
+            text: "clear all"
+            font_size: 26
+            background_color: (0.8, 0.1, 0.1, 1)
+            on_press: root.confirm_clear_list()

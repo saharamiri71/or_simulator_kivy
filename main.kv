@@ -1,0 +1,21 @@
+#:include home_page.kv
+#:include patient_information.kv
+#:include patient_list.kv
+
+ScreenManager:
+    Screen:
+        name: "home_screen"
+        HomePageRoot:
+
+    Screen:
+        name: "patient_info"
+        PatientInfoRoot:
+
+    Screen:
+        name: "patient_list"
+        id: patient_list_screen
+        on_pre_enter: patient_list_root.refresh()
+        PatientListRoot:
+            id: patient_list_root
+
+

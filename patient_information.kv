@@ -1,0 +1,63 @@
+<PatientInfoRoot>:
+    orientation: "vertical"
+    spacing: 30
+    padding: 30
+
+    Label:
+        text: f"Patient information for room {app.selected_room}"
+        font_size: 40
+        size_hint_y: 0.15
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+        padding: 10
+
+        TextInput:
+            id: patient_name
+            hint_text: "enter patient name"
+            font_size: 26
+            multiline: False
+
+        Spinner:
+            id: surgery_type
+            text: "select surgery type"
+            font_size: 26
+            values: ["general surgery", "ophthalmology", "urology", "ENT", "orthopedia", "neurosurgery"]
+
+        Spinner:
+            id: anesthesia_type
+            text: "select anesthesia type"
+            font_size: 26
+            values: ["general with ETT", "general with LMA", "general with face mask", "spinal", "MAC"]
+
+        Widget:
+            size_hint_y: None
+            height: 20
+
+        Button:
+            text: "add patient"
+            font_size: 30
+            size_hint_y: None
+            height: 90
+            background_normal: ""
+            background_color: (0.14, 0.15, 0.18, 1)
+            color: (1, 1, 1, 1)
+            on_press: root.add_patient()
+
+        Widget:
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 20
+        size_hint_y: 0.17
+
+        Button:
+            text: "patient list"
+            font_size: 24
+            on_press: app.root.current = "patient_list"
+
+        Button:
+            text: "home page"
+            font_size: 24
+            on_press: app.root.current = "home_screen"
