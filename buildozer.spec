@@ -16,8 +16,10 @@ fullscreen = 0
 
 android.api = 31
 android.minapi = 21
-android.sdk = 31
+
 android.ndk = 23b
+android.sdk_path = /home/runner/android-sdk
+
 
 android.enable_androidx = True
 android.enable_jetifier = True
