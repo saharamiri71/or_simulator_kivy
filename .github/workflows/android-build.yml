@@ -57,12 +57,14 @@ jobs:
           pip install buildozer cython==0.29.36
 
       - name: Build APK with Buildozer
-        env:
-          ANDROID_HOME: /home/runner/android-sdk
-          ANDROID_SDK_ROOT: /home/runner/android-sdk
-          PATH: /home/runner/android-sdk/platform-tools:/home/runner/android-sdk/cmdline-tools/latest/bin:${{ env.PATH }}
         run: |
+          export ANDROID_HOME=/home/runner/android-sdk
+          export ANDROID_SDK_ROOT=/home/runner/android-sdk
+          export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          which git
+          git --version
           buildozer android debug
+
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
