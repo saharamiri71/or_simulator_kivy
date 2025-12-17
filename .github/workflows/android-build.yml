@@ -51,6 +51,14 @@ jobs:
             "platforms;android-31" \
             "build-tools;31.0.0"
 
+      # ✅ این Step طلاییه (برای همیشه sdkmanager error رو می‌کشه)
+      - name: Fix legacy sdkmanager path for buildozer
+        run: |
+          mkdir -p /home/runner/android-sdk/tools/bin
+          ln -sf /home/runner/android-sdk/cmdline-tools/latest/bin/sdkmanager /home/runner/android-sdk/tools/bin/sdkmanager
+          chmod +x /home/runner/android-sdk/tools/bin/sdkmanager
+          /home/runner/android-sdk/tools/bin/sdkmanager --version
+
       - name: Install Buildozer
         run: |
           pip install --upgrade pip
@@ -64,7 +72,6 @@ jobs:
           which git
           git --version
           buildozer android debug
-
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
