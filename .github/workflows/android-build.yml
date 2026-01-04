@@ -31,6 +31,13 @@ jobs:
             libffi-dev libssl-dev
           git --version
 
+      - name: Configure JDK 17 environment
+        run: |
+          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
+          echo "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH" >> $GITHUB_ENV
+          java -version
+          javac -version
+
       - name: Install Android SDK
         run: |
           export ANDROID_HOME=$HOME/android-sdk
