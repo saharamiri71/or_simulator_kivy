@@ -3,6 +3,8 @@ title = OR Simulator
 package.name = orsimulator
 package.domain = org.kivy
 
+icon.filename = icon.png
+
 source.dir = .
 source.include_exts = py,kv,png,jpg,atlas
 

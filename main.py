@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 from kivy.app import App
 from kivy.lang import Builder
@@ -9,6 +10,8 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.button import Button
+from kivy.properties import StringProperty
+
 
 
 class HomePageRoot(BoxLayout):
@@ -77,11 +80,27 @@ class MyApp(App):
     patients_by_room = DictProperty({})
     data_filename = "patients.json"
 
+    welcome_text = StringProperty("")
+
     def build(self):
         return Builder.load_file("main.kv")
 
     def on_start(self):
+        self.set_welcome_message()
         self.load_patients()
+
+    def set_welcome_message(self):
+        messages = [
+            "Hello Sahar, Welcome sweetie👑",
+            "Hello Sahar, ready to rule the OR?💙",
+            "Today you are better than yesterday",
+            "Starting a new day with the best anesthesiologist!",
+            "Welcome back, legend of the OR!! ",
+            "Saving lives, one anesthesia at a time ",
+            "Powered by coffee, anesthesia, and code"
+        ]
+        self.welcome_text = random.choice(messages)
+
 
     def get_data_path(self):
         return os.path.join(self.user_data_dir, self.data_filename)
